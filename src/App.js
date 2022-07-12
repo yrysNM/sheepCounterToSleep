@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState, useRef, Suspense } from "react";
 import { v4 as uuid } from "uuid";
-import WAVES from "vanta/dist/vanta.waves.min";
-import ModelViewer from "./ModelView";
+import { useGLTF, useAnimations } from "@react-three/drei";
+
 import "./App.css";
 import sheepImg from "./resources/img/sheep.png";
 import sheepImg1 from "./resources/img/sheep2.png";
@@ -11,6 +11,7 @@ import sheepImg4 from "./resources/img/sheep5.png";
 const App = () => {
   const [vantaEffect, setVantaEffect] = useState(0);
   const [sheepCounter, setSheepCounter] = useState(0);
+
   const [sheeps, setSheeps] = useState([
     {
       id: uuid(),
@@ -30,40 +31,11 @@ const App = () => {
     },
     { id: uuid(), img: sheepImg4 },
   ]);
-  const myRef = useRef(null);
 
-  useEffect(() => {
-    if (!vantaEffect) {
-      setVantaEffect(
-        WAVES({
-          el: myRef.current,
-          mouseControls: true,
-          touchControls: true,
-          gyroControls: false,
-          minHeight: 200.0,
-          minWidth: 200.0,
-          scale: 1.0,
-          scaleMobile: 1.0,
-          color: 0x8838,
-          shininess: 1.0,
-          waveHeight: 0.0,
-          waveSpeed: 0.0,
-          zoom: 1,
-        })
-      );
-    }
-    return () => {
-      if (vantaEffect) vantaEffect.destroy();
-    };
-  }, [vantaEffect]);
-
-  // const generateSheep = () => {
-  //   const sheepObj = {
-  //     id: uuid(),
-  //     img: sheepImg,
-  //   };
-  //   setSheeps((sheeps) => [...sheeps, sheepObj]);
-  // };
+  const audio = new Audio("./resources/music/sheepVoice.mp3");
+  const start = () => {
+    audio.play();
+  };
 
   var DragManager = new (function () {
     var dragObject = {};
@@ -87,7 +59,6 @@ const App = () => {
 
     function onMouseMove(e) {
       if (!dragObject.elem) return; // элемент не зажат
-
       if (!dragObject.avatar) {
         // если перенос не начат...
         var moveX = e.pageX - dragObject.downX;
@@ -215,14 +186,14 @@ const App = () => {
       left: box.left + window.pageXOffset,
     };
   }
-
+  useGLTF.preload("./three.glb");
   return (
-    <div ref={myRef} className="app">
+    <div className="app">
       <div className="countNumber">Count sheep 🐑: {sheepCounter}</div>
-      {/* <ModelViewer scale="40" modelPath={"../resources/3dModels/tree.glb"} /> */}
       <div className="imgSheeps">
         {sheeps.map((sheep) => (
           <img
+            onClick={start}
             style={{
               right: Math.random() * 250 - 10 + 10,
               bottom: Math.random() * 400 - 10 + 10,

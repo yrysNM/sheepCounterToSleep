@@ -4,6 +4,8 @@
     margin: 0; 
     font-family: 'Abel', sans-serif;
   }
+
+ 
   .draggable {
     cursor: pointer;
     position: absolute;
@@ -17,12 +19,17 @@
     left: 0;
     width: 500px;
     height: 400px;
-    background-color: red;
+    background-color: rgba(255, 255, 255, 0.6);
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
 
   .app {
     width: 100%;
     height: 100vh;
+    background-image: url("https://cdn.pixabay.com/photo/2015/07/17/19/14/nature-849630__480.jpg"); 
+    background-repeat: no-repeat;
+    background-size: cover ;
+    background-position: center center;
     /* position: absolute !important;  */
   }
 
