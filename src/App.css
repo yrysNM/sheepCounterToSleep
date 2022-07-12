@@ -1,15 +1,9 @@
-.computer {
-    width: 93px;
-    height: 98px;
-    background: url(https://js.cx/clipart/computer.gif) no-repeat;
-    padding: 5px;
-    font-style: italic;
+  *{
+    box-sizing: border-box; 
+    padding: 0; 
+    margin: 0; 
+    font-family: 'Abel', sans-serif;
   }
-  
-  .computer-smile {
-    background: url(https://js.cx/clipart/computer-smile.gif) no-repeat;
-  }
-  
   .draggable {
     cursor: pointer;
     position: absolute;
@@ -24,4 +18,26 @@
     width: 500px;
     height: 400px;
     background-color: red;
+  }
+
+  .app {
+    width: 100%;
+    height: 100vh;
+    /* position: absolute !important;  */
+  }
+
+  .countNumber {
+    font-weight: 400; 
+    font-size: 50px ;
+    padding-top: 50px;
+
+    text-align: center; 
+
+  }
+
+  .imgSheeps {
+    position: absolute;
+    bottom: 0; 
+    right: 0;
+
   }
