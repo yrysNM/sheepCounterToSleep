@@ -1,0 +1,27 @@
+.computer {
+    width: 93px;
+    height: 98px;
+    background: url(https://js.cx/clipart/computer.gif) no-repeat;
+    padding: 5px;
+    font-style: italic;
+  }
+  
+  .computer-smile {
+    background: url(https://js.cx/clipart/computer-smile.gif) no-repeat;
+  }
+  
+  .draggable {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+  }
+
+  .droppable {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 500px;
+    height: 400px;
+    background-color: red;
+  }
