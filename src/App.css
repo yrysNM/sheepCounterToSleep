@@ -4,13 +4,30 @@
     margin: 0; 
     font-family: 'Abel', sans-serif;
   }
+  html {
+    overflow-y: hidden;
+  }
+
+  body {
+    position: relative;
+    overflow-x: hidden;
+  }
+  
+  .app {
+    overflow-y: hidden;
+  }
 
  
   .draggable {
     cursor: pointer;
-    position: absolute;
-    right: 0;
-    bottom: 0;
+    transition: right 0.6s, bottom 0.6s, transform 0.6s;
+    
+  }
+  
+  .draggable:hover {
+    transform: translateZ(100px);
+    transform: scale(1.3);
+
   }
 
   .droppable {
@@ -21,30 +38,126 @@
     height: 400px;
     background-color: rgba(255, 255, 255, 0.6);
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    border-radius: 20px;
+
+  }
+
+  .droppable img {
+    width: 100%; 
+    height: auto;
   }
 
   .app {
     width: 100%;
     height: 100vh;
-    background-image: url("https://cdn.pixabay.com/photo/2015/07/17/19/14/nature-849630__480.jpg"); 
+    background-image: url("https://thumbs.dreamstime.com/b/%D0%B8%D0%BB%D0%BB%D1%8E%D1%81%D1%82%D1%80%D0%B0%D1%86%D0%B8%D1%8F-%D0%BA%D1%80%D0%B0%D1%81%D0%B8%D0%B2%D0%BE%D0%B3%D0%BE-%D0%BB%D0%B0%D0%BD%D0%B4%D1%88%D0%B0%D1%84%D1%82%D0%B0-%D0%BF%D0%BE%D0%BB%D0%B5%D0%B9-%D0%BB%D0%B5%D1%82%D0%B0-%D1%81-%D1%80%D0%B0%D1%81%D1%81%D0%B2%D0%B5%D1%82%D0%BE%D0%BC-%D0%B7%D0%B5%D0%BB%D0%B5%D0%BD%D1%8B%D0%B5-%D1%85%D0%BE%D0%BB%D0%BC%D1%8B-127195351.jpg"); 
     background-repeat: no-repeat;
     background-size: cover ;
     background-position: center center;
-    /* position: absolute !important;  */
+    position: relative;
+    
+  }
+  
+  .bgContainer {
+    height: 100vh;
+    background-color:  rgba(0, 0, 0, 0.2);
+    
+
+  }
+
+  .yurt {
+    position: absolute; 
+    top: 62%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    z-index: 1;
+  }
+
+
+
+  .yurt  img {
+    width: 100%;
+    height:  400px;
+    object-fit: cover;
+    opacity: 0.8;
   }
 
   .countNumber {
     font-weight: 400; 
     font-size: 50px ;
-    padding-top: 50px;
 
+    padding-top: 100px;
     text-align: center; 
-
-  }
+    transition: all 0.6s;
+  } 
 
   .imgSheeps {
     position: absolute;
     bottom: 0; 
     right: 0;
+    min-height: 250px;
+    padding: 50px;
+    z-index: 100;
+  }
 
+  .container {
+    width: 1045px; 
+    margin: 0 auto;
+  }
+
+  @media(max-width: 1200px) {
+    .arrowFlex img {
+       
+      width: 300px;
+      height: 300px;
+      background-size: cover;
+      transform: rotate(45deg);
+    }
+
+    .droppable{
+        width: 300px;
+        height: 350px;
+    }
+  }
+
+  @media(max-width: 991px) {
+    .imgSheeps {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: 300px;
+      justify-content: flex-end;
+    }
+  }
+
+  @media(max-width: 575px) {
+    .droppable{
+      width: 200px;
+      height: 250px;
+      margin-bottom: 170px;
+      margin-left: 10px;
+  }
+  
+  .imgSheeps {
+    padding: 20px;
+    margin-bottom: 50px;
+  }
+
+    .arrowFlex img {
+      display: block;
+      margin: 0 auto;
+      width: 200px;
+      height: 200px;
+      background-size: cover;
+      transform: rotate(90deg);
+    }
+
+    .draggable {
+      width: 70px;
+      height: 70px;
+      
+    }
   }
