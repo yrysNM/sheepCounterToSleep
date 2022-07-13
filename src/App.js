@@ -92,7 +92,6 @@ const App = () => {
       dragObject.key = e.target.getAttribute("data-id");
       dragObject.downX = e.changedTouches[0].pageX;
       dragObject.downY = e.changedTouches[0].pageY;
-      console.log(dragObject);
 
       return false;
     }
@@ -158,7 +157,6 @@ const App = () => {
       dragObject.key = e.target.getAttribute("data-id");
       dragObject.downX = e.pageX;
       dragObject.downY = e.pageY;
-      console.log(dragObject);
 
       return false;
     }
