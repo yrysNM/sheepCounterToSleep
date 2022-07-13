@@ -229,7 +229,7 @@ const App = () => {
       } else {
         self.onDragEnd(dragObject, dropElem);
       }
-      console.log(document.body);
+      // console.log(document.body);
     }
 
     function createAvatar(e) {
