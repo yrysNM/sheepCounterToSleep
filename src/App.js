@@ -66,7 +66,7 @@ const App = () => {
 
   useEffect(() => {
     const data = localStorage.getItem("mysheep");
-    console.log(JSON.parse(data));
+    // console.log(JSON.parse(data));
     if (data !== null) {
       setLastScore(JSON.parse(data));
     }
@@ -80,7 +80,7 @@ const App = () => {
   var DragManager = new (function () {
     var dragObject = {};
     const audio = new Audio(musicSheep);
-    audio.volume = 0.3;
+    audio.volume = 0.02;
     var self = this;
 
     function onTouchStart(e) {
@@ -99,7 +99,7 @@ const App = () => {
 
     function onTouchMove(e) {
       if (!dragObject.elem) return; // элемент не зажат
-      console.log("ядвигаюсь");
+      // console.log("ядвигаюсь");
 
       if (!dragObject.avatar) {
         // если перенос не начат...
@@ -164,7 +164,7 @@ const App = () => {
     }
 
     function onMouseMove(e) {
-      console.log("Я двигаюсь");
+      // console.log("Я двигаюсь");
       if (!dragObject.elem) return; // элемент не зажат
 
       if (!dragObject.avatar) {
@@ -202,7 +202,7 @@ const App = () => {
     }
 
     function onMouseUp(e) {
-      console.log("Its mouse up");
+      // console.log("Its mouse up");
       if (dragObject.avatar) {
         // если перенос идет
         finishDrag(e);
@@ -260,7 +260,7 @@ const App = () => {
 
     function startDrag(e) {
       var avatar = dragObject.avatar;
-      console.log("avatar ", avatar);
+      // console.log("avatar ", avatar);
       // инициировать начало переноса
       document.body.appendChild(avatar);
       avatar.style.zIndex = 9999;
@@ -327,7 +327,7 @@ const App = () => {
         }
         return { ...sheep };
       });
-      console.log(tempSheeps);
+      // console.log(tempSheeps);
       if (is_generate) {
         setSheepCounter((prev) => prev + 1);
         setSheeps([...tempSheeps, generateSheep()]);
@@ -341,7 +341,7 @@ const App = () => {
   function getCoords(elem) {
     // кроме IE8-
     var box = elem.getBoundingClientRect();
-    console.log(box);
+    // console.log(box);
     return {
       top: box.top + window.pageYOffset,
       left: box.left + window.pageXOffset,
@@ -352,7 +352,9 @@ const App = () => {
     <>
       <div className="app">
         <div className="bgContainer">
-          <div>Last time you slept with {lastScore.score} sheeps</div>
+          <div className="lastTimeScore">
+            Last time you fell asleep at {lastScore.score} sheeps
+          </div>
           <div className="countNumber"> 🐑 {sheepCounter}</div>
 
           <div className="imgSheeps">

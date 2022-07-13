@@ -8,7 +8,7 @@ const AppModalWindow = ({ modalWindow }) => {
     const timer = setTimeout(() => {
       setHideModal(true);
       // sessionStorage.popupModal = 1;
-    }, 2000);
+    }, 1000);
 
     return () => clearTimeout(timer);
   }, []);
@@ -20,7 +20,7 @@ const AppModalWindow = ({ modalWindow }) => {
           &times;
         </div>
         <div className="modal__descr">
-          Просто слушайте и считайте овечек 😆🤣
+          Become a shepherd online, feel your useless
         </div>
       </div>
     </div>

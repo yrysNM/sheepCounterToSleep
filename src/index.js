@@ -2,11 +2,9 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import AppModalWindow from "./modelWindow/AppModalWindow";
 import App from "./App";
-import BoopButton from "./backgrounMusic/AppBackgroundMusic";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <>
-    <BoopButton />
     <App />
     <AppModalWindow />
   </>
