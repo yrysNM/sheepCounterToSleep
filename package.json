@@ -15,6 +15,7 @@
     "react-drag-and-drop": "^3.0.0",
     "react-drag-drop-container": "^6.1.1",
     "react-scripts": "^5.0.1",
+    "react-sound": "^1.2.0",
     "three": "^0.142.0",
     "uuidv4": "^6.2.13",
     "vanta": "^0.5.22",

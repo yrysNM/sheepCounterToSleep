@@ -1,6 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuid } from "uuid";
 import arrayShuffle from "array-shuffle";
+
 import "./App.css";
 import sheepImg from "./resources/img/sheep.png";
 import sheepImg1 from "./resources/img/sheep2.png";
@@ -11,13 +12,6 @@ import yurtImg from "./resources/img/yurt.png";
 import fencesImg from "./resources/img/fences.png";
 
 const App = () => {
-  let array = [];
-  function populateAsync(arr) {
-    return new Promise(function (resolve, reject) {
-      //do something
-      resolve(arr); //resolve with value
-    });
-  }
   const generateSheep = () => {
     const sheepObj = {
       id: uuid(),
@@ -27,16 +21,6 @@ const App = () => {
       in_yard: false,
     };
     return sheepObj;
-  };
-
-  const createInitSheeps = async () => {
-    const array = new Array(10);
-    const res = await array.map((item) => generateSheep());
-    const data = await res.data;
-    // for (let i = 0; i < 10; i++) {
-    //     array.push(generateSheep())
-    // }
-    return data;
   };
 
   const sheepImgs = [sheepImg, sheepImg1, sheepImg2, sheepImg4];
@@ -365,43 +349,45 @@ const App = () => {
   }
 
   return (
-    <div className="app">
-      <div className="bgContainer">
-        <div>Last time you slept with {lastScore.score} sheeps</div>
-        <div className="countNumber"> 🐑 {sheepCounter}</div>
+    <>
+      <div className="app">
+        <div className="bgContainer">
+          <div>Last time you slept with {lastScore.score} sheeps</div>
+          <div className="countNumber"> 🐑 {sheepCounter}</div>
 
-        <div className="imgSheeps">
-          {sheeps.map((sheep) => (
+          <div className="imgSheeps">
+            {sheeps.map((sheep) => (
+              <img
+                style={{
+                  right: sheep.x,
+                  bottom: sheep.y,
+                }}
+                width="100"
+                height="100"
+                key={sheep.id}
+                data-id={sheep.id}
+                src={sheep.img}
+                className="draggable"
+                alt="sheep img"
+              />
+            ))}
+          </div>
+          <div className="arrowFlex">
             <img
-              style={{
-                right: sheep.x,
-                bottom: sheep.y,
-              }}
-              width="100"
-              height="100"
-              key={sheep.id}
-              data-id={sheep.id}
-              src={sheep.img}
-              className="draggable"
-              alt="sheep img"
+              src="https://www.adelmantravel.com/wp-content/uploads/2021/08/arrow-gif.gif"
+              alt="arrow"
             />
-          ))}
-        </div>
-        <div className="arrowFlex">
-          <img
-            src="https://www.adelmantravel.com/wp-content/uploads/2021/08/arrow-gif.gif"
-            alt="arrow"
-          />
-        </div>
+          </div>
 
-        <div className="yurt">
-          <img src={yurtImg} alt="yurt img" />
-        </div>
-        <div className="droppable">
-          <img src={fencesImg} alt="fence" />
+          <div className="yurt">
+            <img src={yurtImg} alt="yurt img" />
+          </div>
+          <div className="droppable">
+            <img src={fencesImg} alt="fence" />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
