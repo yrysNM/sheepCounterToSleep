@@ -52,11 +52,11 @@
     height: auto;
   }
 
-  .arrowFlex {
+  /* .arrowFlex {
     position: absolute;
     top: 7%; 
 
-  }
+  } */
 
   .lastTimeScore {
     padding-left: 10px; 
